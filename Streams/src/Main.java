@@ -10,7 +10,8 @@ public class Main {
     public static void main(String[] args) {
 //        readFile2();
 
-        inputStreamBytes();
+//        inputStreamBytes();
+        problem();
     }
 
     // Read a File Inputs Streams
@@ -85,17 +86,9 @@ public class Main {
         5
         */
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-
-            int currentChar = reader.read();
-
-            int counter = 0;
-            while (currentChar != -1) {
-                if (currentChar == 32) {
-                    counter++;
-                }
-
-            }
-            System.out.println(counter);
+            String line = reader.readLine();
+            String[] string = line.strip().split("\\s+");
+            System.out.println(string[0].isEmpty() ? "0" : string.length);
         } catch (IOException e) {
             e.printStackTrace();
         }
