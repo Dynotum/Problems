@@ -12,7 +12,10 @@ public class Main {
 //        readFile2();
 
 //        inputStreamBytes();
-        problem();
+//        problem();
+        int[] result = twoNumberSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 17);
+
+        Arrays.stream(result).forEach(System.out::println);
     }
 
     // Read a File Inputs Streams
@@ -81,7 +84,7 @@ public class Main {
             if (sum > targetSum) {
                 R--;
             } else if (sum < targetSum) {
-                L--;
+                L++;
             } else {
                 return new int[] {array[L],array[R]};
             }
