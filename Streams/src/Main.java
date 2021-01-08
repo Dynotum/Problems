@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 /**
  * If you need to read a text, use character input streams.
@@ -69,6 +70,24 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int[] twoNumberSum(int[] array, int targetSum) {
+        Arrays.sort(array);
+        int L = 0, R = array.length - 1;
+
+        while (L < R ) {
+            int sum = array[L] + array[R];
+            if (sum > targetSum) {
+                R--;
+            } else if (sum < targetSum) {
+                L--;
+            } else {
+                return new int[] {array[L],array[R]};
+            }
+        }
+
+        return new int[0];
     }
 
     public static void problem() {
