@@ -13,9 +13,10 @@ public class Main {
 
 //        inputStreamBytes();
 //        problem();
-        int[] result = twoNumberSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 17);
+//        int[] result = twoNumberSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 17);
 
-        Arrays.stream(result).forEach(System.out::println);
+        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 3));
+//        Arrays.stream(result).forEach(System.out::println);
     }
 
     // Read a File Inputs Streams
@@ -75,18 +76,35 @@ public class Main {
         }
     }
 
+    public static int binarySearch(int[] array, int target) {
+        int L = 0, R = array.length - 1, M = Math.round((L + R) / 2);
+
+        while (L <= R) {
+            M = Math.round((L + R) / 2);
+            int potentialN = array[M];
+            if (potentialN == target) {
+                return M;
+            } else if (potentialN > target) {
+                R = M - 1;
+            } else {
+                L = M + 1;
+            }
+        }
+        return -1;
+    }
+
     public static int[] twoNumberSum(int[] array, int targetSum) {
         Arrays.sort(array);
         int L = 0, R = array.length - 1;
 
-        while (L < R ) {
+        while (L < R) {
             int sum = array[L] + array[R];
             if (sum > targetSum) {
                 R--;
             } else if (sum < targetSum) {
                 L++;
             } else {
-                return new int[] {array[L],array[R]};
+                return new int[]{array[L], array[R]};
             }
         }
 
