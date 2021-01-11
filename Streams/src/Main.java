@@ -9,15 +9,24 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-//        readFile2();
 
-//        inputStreamBytes();
-//        problem();
 //        int[] result = twoNumberSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 17);
-
 //        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 3));
 //        Arrays.stream(result).forEach(System.out::println);
-        System.out.println(isPalindrome("a"));
+//        System.out.println(isPalindrome("a"));
+        threadMethod();
+    }
+
+    private static void threadMethod() {
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName());
+        System.out.println(thread.getState().name());
+        System.out.println(thread.isInterrupted());
+        System.out.println(thread.isAlive());
+        System.out.println(thread.getPriority());
+        System.out.println(thread.isDaemon());
+        System.out.println(thread.getId());
+        System.out.println(thread.getId());
     }
 
     // Read a File Inputs Streams
