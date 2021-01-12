@@ -2,7 +2,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Thread helloThread = new Thread(new HelloThread(), "dynothunder");
         Thread helloThread2 = new Thread(new HelloThread());
@@ -26,6 +26,17 @@ public class Main {
         worker_Y.setName("worker-Y");
         worker_Y.start();
         worker_X.start();
+
+        Thread worker = new WorkerThread();
+        worker.start(); // start the worker
+
+        Thread.sleep(100L);
+
+        System.out.println("Do something useful");
+
+        worker.join(3000L);  // waiting for the worker`
+        System.out.println("The program stopped");
+
     }
 }
 
@@ -36,6 +47,7 @@ class WorkerThread extends Thread {
     @Override
     public void run() {
         final String name = Thread.currentThread().getName();
+
 
         if (!name.startsWith("worker-")) {
             return;
