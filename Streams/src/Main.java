@@ -121,6 +121,22 @@ public class Main {
         return -1;
     }
 
+    public static void OutputStream() {
+        CharArrayWriter contactWriter = new CharArrayWriter();
+
+        try (FileWriter bc1 = new FileWriter("business_card_1.txt", true);
+             FileWriter bc2 = new FileWriter("business_card_2.txt", true)) {
+            contactWriter.write("Phone: 111-222-333; Address: Java Avenue, 7");
+            contactWriter.writeTo(bc1);
+            contactWriter.writeTo(bc2);
+            char[] array = contactWriter.toCharArray(); // writer content as char[]
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static int[] twoNumberSum(int[] array, int targetSum) {
         Arrays.sort(array);
         int L = 0, R = array.length - 1;
