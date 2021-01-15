@@ -22,6 +22,22 @@ public class Main {
         System.out.println("moveElementToEndSolution2 :");
         System.out.println(resultList2);
 
+        System.out.println("Result = " + caesarCypherEncryptor("keeppracticing", 54));
+
+
+    }
+
+    public static String caesarCypherEncryptor(String str, int key) {
+        StringBuilder sb = new StringBuilder();
+        int newK = key % 26;
+        for (char ichar : str.toCharArray()) {
+            int newN = ichar + newK;
+            // System.out.println(newN);
+            // System.out.println(newK + "\n");
+            ichar = (char) (newN > 'z' ? 96 + (newN % 122) : newN);
+            sb.append(ichar);
+        }
+        return sb.toString();
     }
 
     public static List<Integer> moveElementToEndSolution1(List<Integer> array, int toMove) {
