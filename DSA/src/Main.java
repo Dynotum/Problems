@@ -23,8 +23,30 @@ public class Main {
         System.out.println(resultList2);
 
         System.out.println("Result = " + caesarCypherEncryptor("keeppracticing", 54));
+        System.out.println(isPalindrome("a"));
+        System.out.println(getNthFib(4));
 
+    }
 
+    public static int getNthFib(int n) {
+        int a = 0;
+        int b = 1;
+        int counter = 3;
+
+        if (n == 1)
+            return a;
+        if (n == 2)
+            return b;
+
+        while (counter <= n) {
+
+            int nextNum = a + b;
+            a = b;
+            b = nextNum;
+            counter++;
+        }
+
+        return b;
     }
 
     public static String caesarCypherEncryptor(String str, int key) {
@@ -38,6 +60,23 @@ public class Main {
             sb.append(ichar);
         }
         return sb.toString();
+    }
+
+    public static boolean isPalindrome(String string) {
+        return string.equals(new StringBuilder(string).reverse().toString());
+    }
+
+    public static boolean isPalindrome2(String str) {
+        int L = 0, R = str.length() - 1;
+        while (L <= R) {
+            if (str.charAt(L) != str.charAt(R)) {
+                return false;
+            }
+            L++;
+            R--;
+        }
+
+        return true;
     }
 
     public static List<Integer> moveElementToEndSolution1(List<Integer> array, int toMove) {

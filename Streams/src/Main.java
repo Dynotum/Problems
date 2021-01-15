@@ -13,7 +13,6 @@ public class Main {
 //        int[] result = twoNumberSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 17);
 //        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 3));
 //        Arrays.stream(result).forEach(System.out::println);
-//        System.out.println(isPalindrome("a"));
         threadMethod();
     }
 
@@ -85,24 +84,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-    public static boolean isPalindrome(String string) {
-        return string.equals(new StringBuilder(string).reverse().toString());
-    }
-
-    public static boolean isPalindrome2(String str) {
-        int L = 0, R = str.length() - 1;
-        while (L <= R) {
-            if (str.charAt(L) != str.charAt(R)) {
-                return false;
-            }
-            L++;
-            R--;
-        }
-
-        return true;
-    }
-
 
     public static int binarySearch(int[] array, int target) {
         int L = 0, R = array.length - 1, M = Math.round((L + R) / 2);
