@@ -1,3 +1,5 @@
+import org.w3c.dom.html.HTMLParagraphElement;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,7 +116,7 @@ public class Main {
             contactWriter.writeTo(bc2);
             char[] array = contactWriter.toCharArray(); // writer content as char[]
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -162,13 +164,11 @@ public class Main {
     }
 
     public static char[] convert(String[] words) throws IOException {
-        List<char[]> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
 
         for (String str : words) {
-            char[] tmp = str.toCharArray();
-            list.add(tmp);
         }
-        return Arrays.asList(tmp)
+        return list.toArray(new char[]);
     }
 
 }
