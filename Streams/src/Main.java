@@ -167,8 +167,9 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (String str : words) {
+            sb.append(str);
         }
-        return list.toArray(new char[]);
+        return sb.toString().toCharArray();
     }
 
 }
