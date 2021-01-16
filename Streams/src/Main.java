@@ -162,12 +162,13 @@ public class Main {
     }
 
     public static char[] convert(String[] words) throws IOException {
-        List<Character> list = new ArrayList<>();
+        List<char[]> list = new ArrayList<>();
 
         for (String str : words) {
             char[] tmp = str.toCharArray();
-            list.addAll(str.toCharArray());
+            list.add(tmp);
         }
+        return Arrays.asList(tmp)
     }
 
 }
