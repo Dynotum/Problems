@@ -1,5 +1,7 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * If you need to read a text, use character input streams.
@@ -156,6 +158,15 @@ public class Main {
             System.out.println(string[0].isEmpty() ? "0" : string.length);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static char[] convert(String[] words) throws IOException {
+        List<Character> list = new ArrayList<>();
+
+        for (String str : words) {
+            char[] tmp = str.toCharArray();
+            list.addAll(str.toCharArray());
         }
     }
 
