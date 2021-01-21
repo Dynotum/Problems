@@ -116,4 +116,31 @@ public class Main {
         array.set(j, array.get(i));
         array.set(i, tmp);
     }
+
+    /**
+     * Not working propertly :(
+     *
+     * @param queries
+     * @return
+     */
+    public int minimumWaitingTime(int[] queries) {
+        Arrays.sort(queries);
+        int length = queries.length;
+
+        if (length == 1) {
+            return 0;
+        }
+
+        if (length == 2) {
+            return queries[0];
+        }
+
+        int sumUp = queries[0];
+        for (int i = 1; i <= queries.length - 1; i++) {
+            sumUp += queries[i];
+        }
+        return sumUp;
+    }
+}
+
 }
