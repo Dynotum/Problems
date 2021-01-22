@@ -125,22 +125,16 @@ public class Main {
      */
     public int minimumWaitingTime(int[] queries) {
         Arrays.sort(queries);
-        int length = queries.length;
-
-        if (length == 1) {
-            return 0;
+        int totalWT = 0;
+        for (int i = 0; i < queries.length; i++) {
+            int duration = queries[i];
+            int queriesLeft = queries.length - (i + 1);
+            totalWT += duration * queriesLeft;
         }
-
-        if (length == 2) {
-            return queries[0];
-        }
-
-        int sumUp = queries[0];
-        for (int i = 1; i <= queries.length - 1; i++) {
-            sumUp += queries[i];
-        }
-        return sumUp;
+        return totalWT;
     }
+
+
 }
 
 }
