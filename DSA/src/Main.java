@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -135,6 +138,13 @@ public class Main {
     }
 
 
-}
+    public void String(String version) {
+        // 18.0.0
+        Pattern pattern = Pattern.compile("^\\b{2}.\\b{1}.\\b{1}");
+        Matcher matcher = pattern.matcher(version);
+
+        System.out.println(matcher.matches());
+
+    }
 
 }
