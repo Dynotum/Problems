@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        int toMove = 2;
+/*        int toMove = 2;
         final List<Integer> list = new ArrayList<>();
         list.add(2);
         list.add(1);
@@ -27,8 +27,28 @@ public class Main {
 
         System.out.println("Result = " + caesarCypherEncryptor("keeppracticing", 54));
         System.out.println(isPalindrome("a"));
-        System.out.println(getNthFib(4));
+        System.out.println(getNthFib(4));*/
 
+        final List<String> versions = new ArrayList<>();
+        versions.add("2.3.1");
+        versions.add("12.3.1");
+        versions.add(".3.1");
+        versions.add("22.3.1");
+        versions.add("00.0.1");
+        versions.add("12.3.1");
+
+        for (String version : versions) {
+            validVersion(version);
+        }
+
+    }
+
+    public static void validVersion(String version) {
+        // 18.0.0
+        Pattern pattern = Pattern.compile("(\\d{2}).(\\d{1}).(\\d{1})");
+        Matcher matcher = pattern.matcher(version);
+
+        System.out.println(version + " -> " + matcher.matches());
     }
 
     public static int getNthFib(int n) {
@@ -137,14 +157,5 @@ public class Main {
         return totalWT;
     }
 
-
-    public void String(String version) {
-        // 18.0.0
-        Pattern pattern = Pattern.compile("^\\b{2}.\\b{1}.\\b{1}");
-        Matcher matcher = pattern.matcher(version);
-
-        System.out.println(matcher.matches());
-
-    }
 
 }
