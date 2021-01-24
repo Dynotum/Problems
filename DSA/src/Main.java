@@ -45,8 +45,8 @@ public class Main {
 
     public static void validVersion(String version) {
         // 18.0.0
-        Pattern pattern = Pattern.compile("(\\d{2}).(\\d{1}).(\\d{1})");
-        Matcher matcher = pattern.matcher(version);
+        final Pattern pattern = Pattern.compile("(\\d{2}).(\\d).(\\d)");
+        final Matcher matcher = pattern.matcher(version);
 
         System.out.println(version + " -> " + matcher.matches());
     }
