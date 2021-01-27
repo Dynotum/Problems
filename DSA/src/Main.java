@@ -45,6 +45,8 @@ public class Main {
             validVersion(version);
         }
 
+        smallestDifference(new int[]{-1, 5, 10, 20, 28, 3}, new int[]{26, 134, 135, 15, 17});
+
     }
 
 
@@ -163,6 +165,10 @@ public class Main {
     }
 
     // Smallest Difference AlgoExpert
+
+    /**
+     * O(nlog(n) + m(mlog(m)) time | O(1) space
+     */
     public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
         Arrays.sort(arrayOne);
         Arrays.sort(arrayTwo);
@@ -190,7 +196,5 @@ public class Main {
 
         return result;
     }
-
-
 }
 
