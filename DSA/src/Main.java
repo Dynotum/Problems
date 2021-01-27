@@ -1,9 +1,13 @@
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.junit.Assert.assertTrue;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,6 +46,7 @@ public class Main {
         }
 
     }
+
 
     public static void validVersion(String version) {
         // 18.0.0
@@ -157,5 +162,35 @@ public class Main {
         return totalWT;
     }
 
+    // Smallest Difference AlgoExpert
+    public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+        Arrays.sort(arrayOne);
+        Arrays.sort(arrayTwo);
+        int index1 = 0, index2 = 0;
+        int closeZero = Integer.MAX_VALUE;
+        int[] result = new int[2];
+
+        while (index1 < arrayOne.length && index2 < arrayTwo.length) {
+            int compa = Math.abs(arrayOne[index1] + (arrayTwo[index2] * -1));
+
+            if (compa < closeZero) {
+                closeZero = compa;
+                result[0] = arrayOne[index1];
+                result[1] = arrayTwo[index2];
+            }
+
+            if (arrayOne[index1] < arrayTwo[index2]) {
+                index1++;
+            } else if (arrayOne[index1] > arrayTwo[index2]) {
+                index2++;
+            } else {
+                return new int[]{arrayOne[index1], arrayTwo[index2]};
+            }
+        }
+
+        return result;
+    }
+
 
 }
+
