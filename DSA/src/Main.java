@@ -196,5 +196,28 @@ public class Main {
 
         return result;
     }
+
+    public static boolean isMonotonic(int[] array) {
+        if (array == null || array.length == 0) {
+            return true;
+        }
+
+        boolean upwards = true;
+        boolean downwards = true;
+        int i = 0, j = 1;
+        while (i < array.length && j < array.length) {
+            if (array[i] > array[j]) {
+                downwards = false;
+            }
+            if (array[i] < array[j]) {
+                upwards = false;
+            }
+            i++;
+            j++;
+        }
+
+        return upwards || downwards;
+    }
+
 }
 
