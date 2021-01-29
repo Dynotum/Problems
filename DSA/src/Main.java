@@ -147,6 +147,13 @@ public class Main {
         array.set(i, tmp);
     }
 
+    public static void longestPeak(int[] input) {
+        // find all peaks
+        // then count its adjacents
+        // dont cry :)
+        // you can do it :')
+    }
+
     /**
      * Not working propertly :(
      *

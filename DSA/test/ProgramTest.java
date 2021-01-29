@@ -28,4 +28,12 @@ public class ProgramTest {
         var actual = Main.isMonotonic(array);
         assertFalse(actual);
     }
+
+
+    public void TestCase1() {
+        var input = new int[] {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};
+        var expected = 6;
+        var actual = Main.longestPeak(input);
+        assertTrue(expected == actual);
+    }
 }
