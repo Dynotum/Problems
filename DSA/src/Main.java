@@ -154,8 +154,24 @@ public class Main {
     }
 
 
-    public static int longestPrefix(int[] input) {
-        return 0;
+    public static int longestPrefix(int x, int y, int[] input) {
+        int counter = -1, xFound = 0, yFound = 0;
+
+        for (int i = 0; i < input.length; i++) {
+            if (x == input[i]) {
+                xFound++;
+            }
+            if (y == input[i]) {
+                yFound++;
+            }
+
+            if (xFound == yFound) {
+                if (counter < i) {
+                    counter = i;
+                }
+            }
+        }
+        return counter;
     }
 
     /**

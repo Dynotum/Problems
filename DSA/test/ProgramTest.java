@@ -41,8 +41,29 @@ public class ProgramTest {
     @Test
     public void TestCaseLongestPrefix() {
         int[] input = new int[]{6, 42, 11, 7, 1, 42};
+        int x = 7, y = 42;
         int prefixLengthExpected = 4;
-        int actualResult = Main.longestPrefix(input);
+        int actualResult = Main.longestPrefix(x,y,input);
         assertTrue(prefixLengthExpected == actualResult);
     }
+
+    @Test
+    public void TestCaseLongestPrefix2() {
+        int x = 6, y = 13;
+        int[] input = new int[]{13, 13, 1, 6};
+        int prefixLengthExpected = -1;
+        int actualResult = Main.longestPrefix(x,y,input);
+        assertTrue(prefixLengthExpected == actualResult);
+    }
+
+    @Test
+    public void TestCaseLongestPrefix3() {
+        int x = 100, y = 63;
+        int[] input = new int[]{100, 63, 1, 6, 2, 13};
+        int prefixLengthExpected = 5;
+        int actualResult = Main.longestPrefix(x,y,input);
+        assertTrue(prefixLengthExpected == actualResult);
+    }
+
+
 }
