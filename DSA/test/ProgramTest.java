@@ -17,7 +17,7 @@ public class ProgramTest {
 
     @Test
     public void TestCaseIsMonotonic() {
-        var array = new int[] {-1, -5, -10, -1100, -1100, -1101, -1102, -9001};
+        var array = new int[]{-1, -5, -10, -1100, -1100, -1101, -1102, -9001};
         var actual = Main.isMonotonic(array);
         assertTrue(actual);
     }
@@ -29,11 +29,20 @@ public class ProgramTest {
         assertFalse(actual);
     }
 
-
-    public void TestCase1() {
-        var input = new int[] {1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};
+    @Test
+    public void TestCaseLongestPeak() {
+        var input = new int[]{1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3};
         var expected = 6;
         var actual = Main.longestPeak(input);
         assertTrue(expected == actual);
+    }
+
+
+    @Test
+    public void TestCaseLongestPrefix() {
+        int[] input = new int[]{6, 42, 11, 7, 1, 42};
+        int prefixLengthExpected = 4;
+        int actualResult = Main.longestPrefix(input);
+        assertTrue(prefixLengthExpected == actualResult);
     }
 }

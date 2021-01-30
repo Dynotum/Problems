@@ -1,5 +1,3 @@
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -147,11 +145,17 @@ public class Main {
         array.set(i, tmp);
     }
 
-    public static void longestPeak(int[] input) {
+    public static int longestPeak(int[] input) {
         // find all peaks
         // then count its adjacents
         // dont cry :)
         // you can do it :')
+        return 0;
+    }
+
+
+    public static int longestPrefix(int[] input) {
+        return 0;
     }
 
     /**
