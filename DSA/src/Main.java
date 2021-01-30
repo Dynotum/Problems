@@ -161,7 +161,7 @@ public class Main {
             if (x == input[i]) {
                 xFound++;
             }
-            if (y == input[i]) {
+            if (y == input[i]) { // x and y can be equals!!
                 yFound++;
             }
 
@@ -171,7 +171,7 @@ public class Main {
                 }
             }
         }
-        return counter;
+        return counter == 0 ? counter++ : counter;
     }
 
     /**

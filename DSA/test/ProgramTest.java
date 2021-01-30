@@ -64,6 +64,13 @@ public class ProgramTest {
         int actualResult = Main.longestPrefix(x,y,input);
         assertTrue(prefixLengthExpected == actualResult);
     }
-
+    @Test
+    public void TestCaseLongestPrefixXYequals() {
+        int[] input = new int[]{6, 42, 11, 7, 1, 42};
+        int x = 42, y = 42;
+        int prefixLengthExpected = 5;
+        int actualResult = Main.longestPrefix(x,y,input);
+        assertTrue(prefixLengthExpected == actualResult);
+    }
 
 }
