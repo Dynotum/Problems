@@ -43,7 +43,7 @@ public class ProgramTest {
         int[] input = new int[]{6, 42, 11, 7, 1, 42};
         int x = 7, y = 42;
         int prefixLengthExpected = 4;
-        int actualResult = Main.longestPrefix(x,y,input);
+        int actualResult = Main.longestPrefix(x, y, input);
         assertTrue(prefixLengthExpected == actualResult);
     }
 
@@ -52,7 +52,7 @@ public class ProgramTest {
         int x = 6, y = 13;
         int[] input = new int[]{13, 13, 1, 6};
         int prefixLengthExpected = -1;
-        int actualResult = Main.longestPrefix(x,y,input);
+        int actualResult = Main.longestPrefix(x, y, input);
         assertTrue(prefixLengthExpected == actualResult);
     }
 
@@ -61,16 +61,71 @@ public class ProgramTest {
         int x = 100, y = 63;
         int[] input = new int[]{100, 63, 1, 6, 2, 13};
         int prefixLengthExpected = 5;
-        int actualResult = Main.longestPrefix(x,y,input);
+        int actualResult = Main.longestPrefix(x, y, input);
         assertTrue(prefixLengthExpected == actualResult);
     }
+
     @Test
     public void TestCaseLongestPrefixXYequals() {
         int[] input = new int[]{6, 42, 11, 7, 1, 42};
         int x = 42, y = 42;
         int prefixLengthExpected = 5;
-        int actualResult = Main.longestPrefix(x,y,input);
+        int actualResult = Main.longestPrefix(x, y, input);
         assertTrue(prefixLengthExpected == actualResult);
     }
 
+    @Test
+    public void TestCaseBinaryToDecimal() {
+        final String binary = "011100";
+        final int decimal = 28;
+        final int resultDecimal = Main.getDecimal(binary);
+
+        assertTrue(decimal == resultDecimal);
+    }
+
+    @Test
+    public void TestCaseBinaryToDecimal2() {
+        final String binary = "111";
+        final int decimal = 7;
+        final int resultDecimal = Main.getDecimal(binary);
+
+        assertTrue(decimal == resultDecimal);
+    }
+
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZero() {
+        final String binary = "011100";
+        final int movesToZero = 7;
+        final int getMoves = Main.binaryToZero(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZero2() {
+        final String binary = "111";
+        final int movesToZero = 5;
+        final int getMoves = Main.binaryToZero(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZero3() {
+        final String binary = "111";
+        final int movesToZero = 5;
+        final int getMoves = Main.binaryToZero(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZero4() {
+        final String binary = "1111010101111";
+        final int movesToZero = 22;
+        final int getMoves = Main.binaryToZero(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
 }

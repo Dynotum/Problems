@@ -174,6 +174,40 @@ public class Main {
         return counter == 0 ? counter++ : counter;
     }
 
+    public static int binaryToZero(String binary) {
+        int decNumber = getDecimal(binary);
+        int moves = 0;
+        while (decNumber > 0) {
+            if (decNumber % 2 == 0) {
+                moves++;
+                decNumber /= 2;
+            }
+            if (decNumber % 2 != 0) {
+                moves++;
+                decNumber--;
+            }
+        }
+        return moves;
+    }
+
+    public static int getDecimal(String binary) {
+        final String revBinary = new StringBuilder(binary).reverse().toString();
+
+        int decNumber = 0, binNumber = 0;
+        for (int i = 0; i < revBinary.length(); i++) {
+            if (i == 0) {
+                binNumber = 1;
+            } else {
+                binNumber *= 2;
+            }
+
+            if (revBinary.charAt(i) == '1') {
+                decNumber += binNumber;
+            }
+        }
+        return decNumber;
+    }
+
     /**
      * Not working propertly :(
      *
