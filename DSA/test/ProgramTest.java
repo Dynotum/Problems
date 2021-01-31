@@ -128,4 +128,31 @@ public class ProgramTest {
 
         assertTrue(movesToZero == getMoves);
     }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZeroBS() {
+        final String binary = "111";
+        final int movesToZero = 5;
+        final int getMoves = Main.binaryToZeroBestSolution(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZeroBS2() {
+        final String binary = "111";
+        final int movesToZero = 5;
+        final int getMoves = Main.binaryToZeroBestSolution(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
+
+    @Test
+    public void TestCaseMovesOfBinaryToDecimalZeroBS3() {
+        final String binary = "1111010101111";
+        final int movesToZero = 22;
+        final int getMoves = Main.binaryToZeroBestSolution(binary);
+
+        assertTrue(movesToZero == getMoves);
+    }
 }

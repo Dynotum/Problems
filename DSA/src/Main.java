@@ -208,6 +208,12 @@ public class Main {
         return decNumber;
     }
 
+    public static int binaryToZeroBestSolution(String s) {
+        final int firstOneAt = s.indexOf("1");
+        return firstOneAt == -1 ? 0
+                : s.replace("0", "").length() + s.length() - firstOneAt - 1;
+    }
+
     /**
      * Not working propertly :(
      *
