@@ -162,7 +162,7 @@ public class ProgramTest {
         final String A = "apple";
         final String B = "pear";
         final int minimumLetters = 3;
-        final int resultMinimumLetters = Main.lettersToAnagram(A,B);
+        final int resultMinimumLetters = Main.countManipulations(A,B);
         assertTrue(minimumLetters == resultMinimumLetters);
     }
 }
