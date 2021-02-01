@@ -155,4 +155,14 @@ public class ProgramTest {
 
         assertTrue(movesToZero == getMoves);
     }
+
+
+    @Test
+    public void TestCaseNumberOfLettersToMakeItEqualAnagrams() {
+        final String A = "apple";
+        final String B = "pear";
+        final int minimumLetters = 3;
+        final int resultMinimumLetters = Main.lettersToAnagram(A,B);
+        assertTrue(minimumLetters == resultMinimumLetters);
+    }
 }

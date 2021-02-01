@@ -31,19 +31,22 @@ public class Main {
         System.out.println(isPalindrome("a"));
         System.out.println(getNthFib(4));*/
 
-        final List<String> versions = new ArrayList<>();
-        versions.add("2.3.1");
-        versions.add("12.3.1");
-        versions.add(".3.1");
-        versions.add("22.3.1");
-        versions.add("00.0.1");
-        versions.add("12.3.1");
-
-        for (String version : versions) {
-            validVersion(version);
-        }
-
-        smallestDifference(new int[]{-1, 5, 10, 20, 28, 3}, new int[]{26, 134, 135, 15, 17});
+//        final List<String> versions = new ArrayList<>();
+//        versions.add("2.3.1");
+//        versions.add("12.3.1");
+//        versions.add(".3.1");
+//        versions.add("22.3.1");
+//        versions.add("00.0.1");
+//        versions.add("12.3.1");
+//
+//        for (String version : versions) {
+//            validVersion(version);
+//        }
+//
+//        smallestDifference(new int[]{-1, 5, 10, 20, 28, 3}, new int[]{26, 134, 135, 15, 17});
+        final String A = "apple";
+        final String B = "pear";
+        lettersToAnagram(A, B);
 
     }
 
@@ -212,6 +215,47 @@ public class Main {
         final int firstOneAt = s.indexOf("1");
         return firstOneAt == -1 ? 0
                 : s.replace("0", "").length() + s.length() - firstOneAt - 1;
+    }
+
+    public static int lettersToAnagram(String A, String B) {
+
+        if (A.equals(B)) {
+            return 0;
+        }
+
+        char[] a = A.toCharArray(), b = B.toCharArray();
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        StringBuilder result = new StringBuilder();
+        int minLetters = 0;
+        int i = 0, j = 0;
+
+        while (i < a.length && j < b.length) {
+            if (i == a.length -1) {
+                j++;
+                continue;
+            }
+
+            if (a[i] < b[j]) {
+                result.append(a[i]);
+
+
+                i++;
+            } else if (a[i] > b[j]) {
+                result.append(b[j]);
+                minLetters++;
+                j++;
+            } else {
+                result.append(a[i]);
+                i++;
+                j++;
+            }
+        }
+        System.out.println(result);
+        System.out.println(minLetters);
+        return minLetters;
     }
 
     /**
