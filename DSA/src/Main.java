@@ -365,5 +365,22 @@ public class Main {
         return upwards || downwards;
     }
 
+    public static int productSum(List<Object> array) {
+        return productSum(array, 1);
+    }
+
+    public static int productSum(List<Object> array, int nivel) {
+        int sumUp = 0;
+        for (Object o : array) {
+            if (o instanceof ArrayList) {
+                ArrayList<Object> newArray = (ArrayList<Object>) o;
+                sumUp += productSum(newArray, nivel + 1);
+            } else {
+                sumUp+= (int)o;
+            }
+        }
+
+        return sumUp * nivel;
+    }
 }
 
