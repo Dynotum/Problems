@@ -166,7 +166,7 @@ public class ProgramTest {
         final String A = "apple";
         final String B = "pear";
         final int minimumLetters = 3;
-        final int resultMinimumLetters = Main.countManipulations(A,B);
+        final int resultMinimumLetters = Main.countManipulations(A, B);
         assertTrue(minimumLetters == resultMinimumLetters);
     }
 
@@ -182,5 +182,23 @@ public class ProgramTest {
                                 new ArrayList<Object>(
                                         Arrays.asList(6, new ArrayList<Object>(Arrays.asList(-13, 8)), 4))));
         assertTrue(Main.productSum(test) == 12);
+    }
+
+
+    @Test
+    public void TestCaseBST() {
+        var root = new Main.BST(10);
+        root.left = new Main.BST(5);
+        root.left.left =  new Main.BST(2);
+        root.left.left.left =  new Main.BST(1);
+        root.left.right = new  Main.BST(5);
+        root.right = new  Main.BST(15);
+        root.right.left =  new Main.BST(13);
+        root.right.left.right =  new Main.BST(14);
+        root.right.right = new  Main.BST(22);
+
+        var expected = 13;
+        var actual = Main.findClosestValueInBst(root, 12);
+        assertEquals(expected, actual);
     }
 }

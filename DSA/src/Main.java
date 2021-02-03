@@ -382,5 +382,34 @@ public class Main {
 
         return sumUp * nivel;
     }
+
+    public static int findClosestValueInBst(BST tree, int target) {
+        return findClosestValueInBst(tree, target, tree.value);
+    }
+    public static int findClosestValueInBst(BST tree, int target, int closestValue) {
+        // 10 - 12 = 2
+        if(Math.abs(target - closestValue) > Math.abs(target - tree.value)){
+            closestValue = tree.value;
+        }
+        // 10				12
+        if (tree.value < target && tree.right != null) {
+            return findClosestValueInBst(tree.right, target, closestValue);
+            // 15 > 12
+        } else if (tree.value > target && tree.left != null) {
+            return findClosestValueInBst(tree.left, target, closestValue);
+        } else {
+            return closestValue;
+        }
+    }
+
+    static class BST {
+        public int value;
+        public BST left;
+        public BST right;
+
+        public BST(int value) {
+            this.value = value;
+        }
+    }
 }
 
