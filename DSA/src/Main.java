@@ -258,7 +258,7 @@ public class Main {
         System.out.println(minLetters);
         return minLetters;
     }
-
+    // Asked coding assessment :(
     // Counts the no of manipulations required
     static int countManipulations(String s1, String s2)
     {
