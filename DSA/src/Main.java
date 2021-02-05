@@ -58,8 +58,19 @@ public class Main {
     }
 
     public static int[] bubbleSort(int[] array) {
+        boolean isSorted = false;
 
-        Arrays.sort(array);
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    int temp = array[i + 1];
+                    array[i + 1] = array[i];
+                    array[i] = temp;
+                    isSorted = false;
+                }
+            }
+        }
         return array;
     }
 
@@ -306,10 +317,10 @@ public class Main {
         System.out.println(minLetters);
         return minLetters;
     }
+
     // Asked coding assessment :(
     // Counts the no of manipulations required
-    static int countManipulations(String s1, String s2)
-    {
+    static int countManipulations(String s1, String s2) {
         int count = 0;
 
         // store the count of character
