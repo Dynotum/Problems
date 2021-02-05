@@ -45,12 +45,39 @@ public class Main {
 //        }
 //
 //        smallestDifference(new int[]{-1, 5, 10, 20, 28, 3}, new int[]{26, 134, 135, 15, 17});
-        final String A = "apple";
-        final String B = "pear";
-        lettersToAnagram(A, B);
+//        final String A = "apple";
+//        final String B = "pear";
+//        lettersToAnagram(A, B);
+
+        System.out.println(solution(new int[]{1, 3, 2, 1}, new int[]{4, 2, 5, 3, 2}));
+        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
+
+        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
+
 
     }
 
+    public static int[] bubbleSort(int[] array) {
+
+        Arrays.sort(array);
+        return array;
+    }
+
+    public static int solution(int[] A, int[] B) {
+        int n = A.length;
+        int m = B.length;
+        ;
+        Arrays.sort(A);
+        Arrays.sort(B);
+        int i = 0;
+        for (int k = 0; k < n; k++) {
+            if (i < m - 1 && B[i] < A[k])
+                i += 1;
+            if (A[k] == B[i])
+                return A[k];
+        }
+        return -1;
+    }
 
     public static void validVersion(String version) {
         // 18.0.0
@@ -194,6 +221,27 @@ public class Main {
         return moves;
     }
 
+/*
+    public static int getDecimal(String binary) {
+//        final String revBinary = new StringBuilder(binary).reverse().toString();
+
+        int decNumber = 1, binNumber = 1;
+        for (int i = binary.length() -1; i >= 0; --i) {
+            if (i == 0) {
+                binNumber = 1;
+            } else {
+                binNumber *= 2;
+            }
+
+            if (binary.charAt(i) == '1') {
+                decNumber += binNumber;
+            }
+        }
+        System.out.println(decNumber);
+        return decNumber;
+    }
+*/
+
     public static int getDecimal(String binary) {
         final String revBinary = new StringBuilder(binary).reverse().toString();
 
@@ -234,7 +282,7 @@ public class Main {
         int i = 0, j = 0;
 
         while (i < a.length && j < b.length) {
-            if (i == a.length -1) {
+            if (i == a.length - 1) {
                 j++;
                 continue;
             }
@@ -258,10 +306,9 @@ public class Main {
         System.out.println(minLetters);
         return minLetters;
     }
-
     // Counts the no of manipulations required
-    static int countManipulations(String s1, String s2)
-    {
+
+    static int countManipulations(String s1, String s2) {
         int count = 0;
 
         // store the count of character
@@ -277,16 +324,13 @@ public class Main {
         // update char_count.
         // if character is not found in char_count
         // then increase count
-        for (int i = 0; i < s2.length(); i++)
-        {
+        for (int i = 0; i < s2.length(); i++) {
             char_count[s2.charAt(i) - 'a']--;
         }
 
-        for(int i = 0; i < 26; ++i)
-        {
-            if(char_count[i] != 0)
-            {
-                count+=abs(char_count[i]);
+        for (int i = 0; i < 26; ++i) {
+            if (char_count[i] != 0) {
+                count += abs(char_count[i]);
             }
         }
 
@@ -376,7 +420,7 @@ public class Main {
                 ArrayList<Object> newArray = (ArrayList<Object>) o;
                 sumUp += productSum(newArray, nivel + 1);
             } else {
-                sumUp+= (int)o;
+                sumUp += (int) o;
             }
         }
 
@@ -386,9 +430,10 @@ public class Main {
     public static int findClosestValueInBst(BST tree, int target) {
         return findClosestValueInBst(tree, target, tree.value);
     }
+
     public static int findClosestValueInBst(BST tree, int target, int closestValue) {
         // 10 - 12 = 2
-        if(Math.abs(target - closestValue) > Math.abs(target - tree.value)){
+        if (Math.abs(target - closestValue) > Math.abs(target - tree.value)) {
             closestValue = tree.value;
         }
         // 10				12
@@ -405,11 +450,47 @@ public class Main {
     static class BST {
         public int value;
         public BST left;
+
         public BST right;
 
         public BST(int value) {
             this.value = value;
         }
+
     }
+
+
+    public static int solution(String A, String B) {
+
+        char[] a = A.toCharArray(), b = B.toCharArray();
+        int result = 0;
+        // sorting arrays
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        List<Character> list = new ArrayList<>();
+
+        // Gets ASCII of a and z (lowercase)
+        int asciiA = (int) 'a';  // 97
+        int asciiZ = Integer.valueOf('z');  // 122
+        int alphabet = asciiZ - asciiA;
+        int charArray[] = new int[alphabet];
+
+        // Adds index and the current ascii value - ascci of a
+        for (int i = 0; i < a.length; i++) {
+            list.add(i, (char) (a[i] - asciiA));
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            char value = list.get(i);
+            if (value != 0) {
+                int valueAbs = Math.abs(value);
+                result = result + valueAbs;
+            }
+        }
+        System.out.println(result);
+        return result;
+    }
+
 }
 

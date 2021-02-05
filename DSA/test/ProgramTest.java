@@ -166,7 +166,7 @@ public class ProgramTest {
         final String A = "apple";
         final String B = "pear";
         final int minimumLetters = 3;
-        final int resultMinimumLetters = Main.countManipulations(A, B);
+        final int resultMinimumLetters = Main.solution(A, B);
         assertTrue(minimumLetters == resultMinimumLetters);
     }
 
@@ -183,7 +183,24 @@ public class ProgramTest {
                                         Arrays.asList(6, new ArrayList<Object>(Arrays.asList(-13, 8)), 4))));
         assertTrue(Main.productSum(test) == 12);
     }
+    @Test
+    public void TestCaseBubbles() {
+        int[] expected = {2, 3, 5, 5, 6, 8, 9};
+        int[] input = {8, 5, 2, 9, 5, 6, 3};
+        assertTrue(compare(Main.bubbleSort(input), expected));
+    }
 
+    public boolean compare(int[] arr1, int[] arr2) {
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     @Test
     public void TestCaseBST() {
@@ -201,4 +218,69 @@ public class ProgramTest {
         var actual = Main.findClosestValueInBst(root, 12);
         assertEquals(expected, actual);
     }
+
+
 }
+
+///*
+//* // you can also use imports, for example:
+//import java.util.*;
+//
+//class Solution {
+//    /*
+//    *** It seems when there's a bigger lenght of string, it fails
+//        After obtaining the decimal value
+//        Computes whether is even by module % 2
+//        Otherwise, sum up by one.
+//        Average time O(n) due to it's a single while
+//    */
+//public int solution(String S) {
+//    // get decimal value
+//    int decNumber = getDecimal(S);
+//    int moves = 0;
+//    while (decNumber > 0) {
+//        if (decNumber % 2 == 0) {
+//            moves++;
+//            decNumber /= 2;
+//        }
+//        if (decNumber % 2 != 0) {
+//            moves++;
+//            decNumber--;
+//        }
+//    }
+//    return moves;
+//}
+//
+//    /*
+//        Binary string to Decimal int
+//        Reverse the string using the method of StringBuilder.
+//        Then, loops through the length of the string.
+//    */
+//    public int getDecimal(String binary) {
+//        // Realized this can be implemented without reversing
+//        // Instead, looping through the array can be backward
+//        final String revBinary = new StringBuilder(binary).reverse().toString();
+//
+//        int decNumber = 0, binNumber = 0;
+//        // O(n) due to looping through each char element of the string
+//        // If index is not zero, multiple by 2 -> binNumber -> 2,4,8,16...
+//        // Otherwise, is 1
+//        for (int i = 0; i < revBinary.length(); i++) {
+//            if (i == 0) {
+//                binNumber = 1;
+//            } else {
+//                binNumber *= 2;
+//            }
+//
+//            // In case there's a bit on, we need to sum up its decimal value
+//            if (revBinary.charAt(i) == '1') {
+//                decNumber += binNumber;
+//            }
+//        }
+//
+//        return decNumber;
+//    }
+//}
+//
+//*
+//* */
