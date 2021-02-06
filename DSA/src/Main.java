@@ -271,6 +271,33 @@ public class Main {
         return decNumber;
     }
 
+    public static int[][] rotateImage(int[][] a) {
+
+        int n = a.length;
+
+        for (int layer = 0; layer < n / 2 ; layer++) {
+            int first = layer;
+            int last = n - 1 - layer;
+
+            for (int i = first; i < last; i++) {
+                int offset = i - first;
+                int top = a[first][i];
+
+                // left -> top
+                a[first][i] = a[last-offset][first];
+                // bottom -> left
+                a[last-offset][first] = a[last][last - offset];
+                // rigth -> bottom
+                a[last][last - offset] = a[i][last];
+                // top -> rigth
+                a[i][last] = top;
+            }
+        }
+        return a;
+
+    }
+
+
     public static int binaryToZeroBestSolution(String s) {
         final int firstOneAt = s.indexOf("1");
         return firstOneAt == -1 ? 0
