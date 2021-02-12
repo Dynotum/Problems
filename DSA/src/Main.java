@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,12 +46,43 @@ public class Main {
 //        final String B = "pear";
 //        lettersToAnagram(A, B);
 
-        System.out.println(solution(new int[]{1, 3, 2, 1}, new int[]{4, 2, 5, 3, 2}));
-        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
+//        System.out.println(solution(new int[]{1, 3, 2, 1}, new int[]{4, 2, 5, 3, 2}));
+//        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
+//
+//        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
+        final Scanner sc = new Scanner(System.in);
 
-        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
+        int n = sc.nextInt();
+        int[] array = new int[n];
 
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextInt();
+        }
 
+        triples(array);
+
+    }
+
+    public static void triples(int[] array) {
+
+        final int n = array.length;
+        int counter = 0;
+        final List<Integer> indexFound = new ArrayList<>();
+        // O(n)
+        for (int i = 0; i < n; i++) {
+
+            if (array[i] % 3 == 0) {
+                counter++;
+                indexFound.add(i + 1);
+            }
+        }
+
+        if (indexFound.size() == 0) {
+            System.out.println("No hay triples.");
+        }
+
+        System.out.println(counter);
+        indexFound.forEach(i -> System.out.print(i + " "));
     }
 
     public static int[] bubbleSort(int[] array) {
@@ -62,7 +90,7 @@ public class Main {
 
         while (!isSorted) {
             isSorted = true;
-            for (int i = 0; i < array.length - 1; i++) {
+            for (int i = 0; i < array.length; i++) {
                 if (array[i] > array[i + 1]) {
                     int temp = array[i + 1];
                     array[i + 1] = array[i];
@@ -73,6 +101,7 @@ public class Main {
         }
         return array;
     }
+
 
     public static int solution(int[] A, int[] B) {
         int n = A.length;
@@ -275,7 +304,7 @@ public class Main {
 
         int n = a.length;
 
-        for (int layer = 0; layer < n / 2 ; layer++) {
+        for (int layer = 0; layer < n / 2; layer++) {
             int first = layer;
             int last = n - 1 - layer;
 
@@ -284,9 +313,9 @@ public class Main {
                 int top = a[first][i];
 
                 // left -> top
-                a[first][i] = a[last-offset][first];
+                a[first][i] = a[last - offset][first];
                 // bottom -> left
-                a[last-offset][first] = a[last][last - offset];
+                a[last - offset][first] = a[last][last - offset];
                 // rigth -> bottom
                 a[last][last - offset] = a[i][last];
                 // top -> rigth
