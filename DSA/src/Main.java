@@ -68,12 +68,13 @@ public class Main {
                 indexFound.add(i + 1);
             }
         }
-        if (indexFound.size() == 0) {
+        if (indexFound.size() != 0) {
+            System.out.println(counter);
+            indexFound.forEach(i -> System.out.print(i + " "));
+        } else {
             System.out.println("No hay triples.");
         }
 
-        System.out.println(counter);
-        indexFound.forEach(i -> System.out.print(i + " "));
     }
 
     public static int[] bubbleSort(int[] array) {
