@@ -50,33 +50,24 @@ public class Main {
 //        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
 //
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
-        final Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
-        int[] array = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            array[i] = sc.nextInt();
-        }
-
-        triples(array);
+        triples();
 
     }
 
-    public static void triples(int[] array) {
+    public static void triples() {
+        final Scanner sc = new Scanner(System.in);
 
-        final int n = array.length;
+        int n = sc.nextInt();
         int counter = 0;
-        final List<Integer> indexFound = new ArrayList<>();
-        // O(n)
-        for (int i = 0; i < n; i++) {
 
-            if (array[i] % 3 == 0) {
+        final List<Integer> indexFound = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int element = sc.nextInt();
+            if (element % 3 == 0) {
                 counter++;
                 indexFound.add(i + 1);
             }
         }
-
         if (indexFound.size() == 0) {
             System.out.println("No hay triples.");
         }
