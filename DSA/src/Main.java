@@ -50,10 +50,41 @@ public class Main {
 //        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
 //
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
-        triples();
+        NOFibonacci();
 
     }
 
+    public static void NOFibonacci() {
+        final int n = new Scanner(System.in).nextInt();
+        if (n == 1 || n == 0) {
+            return;
+        }
+
+        int prevPrev, prev = 1, next = 1;
+        boolean[] fibo = new boolean[n + 1]; // [9] -> [0.1.2.3.4.5.6.7.8]
+
+        for (int i = 2; i < fibo.length; i++) {
+            prevPrev = prev + next;
+            next = prev;
+            prev = prevPrev;
+
+            if (prevPrev > n) {
+//                fibo[n] = true;
+                break;
+            } else {
+                fibo[prevPrev] = true;
+            }
+        }
+
+        for (int i = 2; i < fibo.length; i++) {
+            if (!fibo[i]) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+
+    // omegaUp
     public static void triples() {
         final Scanner sc = new Scanner(System.in);
 
