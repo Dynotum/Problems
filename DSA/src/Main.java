@@ -50,8 +50,29 @@ public class Main {
 //        System.out.println(solution(new int[]{2, 1}, new int[]{3, 3}));
 //
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
-        NOFibonacci();
+//        NOFibonacci();
+        fraccionMix();
     }
+
+    public static void fraccionMix() {
+        final Scanner scanner = new Scanner(System.in);
+        final int n = scanner.nextInt();
+        final int m = scanner.nextInt();
+
+        if (n % m == 0) {
+            System.out.println(n / m);
+            return;
+        }
+
+        final StringBuilder sb = new StringBuilder();
+        sb.append(n / m)
+                .append(" ")
+                .append(n % m)
+                .append("/")
+                .append(m);
+        System.out.println(sb.toString());
+    }
+
 
     public static void NOFibonacci() {
         final int n = new Scanner(System.in).nextInt();
@@ -69,7 +90,7 @@ public class Main {
 
             if (prevPrev > n) {
                 fibo[n] = true;
-                break;
+
             } else {
                 fibo[prevPrev] = true;
             }
