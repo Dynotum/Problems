@@ -51,7 +51,6 @@ public class Main {
 //
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
         NOFibonacci();
-
     }
 
     public static void NOFibonacci() {
@@ -61,7 +60,7 @@ public class Main {
         }
 
         int prevPrev, prev = 1, next = 1;
-        boolean[] fibo = new boolean[n + 1]; // [9] -> [0.1.2.3.4.5.6.7.8]
+        boolean[] fibo = new boolean[n + 1];
 
         for (int i = 2; i < fibo.length; i++) {
             prevPrev = prev + next;
@@ -69,7 +68,7 @@ public class Main {
             prev = prevPrev;
 
             if (prevPrev > n) {
-//                fibo[n] = true;
+                fibo[n] = true;
                 break;
             } else {
                 fibo[prevPrev] = true;
