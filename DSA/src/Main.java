@@ -51,7 +51,39 @@ public class Main {
 //
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
 //        NOFibonacci();
-        fraccionMix();
+//        translator();
+        System.out.println(sumUp(7205));
+
+    }
+
+    private static int sumUp(long n) {
+        return sumUp(n, 0);
+    }
+
+    private static int sumUp(long n, int residuo) {
+        if (n == 0) {
+            return residuo;
+        }
+
+        return sumUp(n / 10, (int) (n % 10 + residuo));
+    }
+
+
+    public static void translator() {
+        final Scanner sc = new Scanner(System.in);
+        final int noTranslator = sc.nextInt();
+        final int noTranslate = sc.nextInt();
+        final Map<Integer, Integer> hash = new HashMap<>();
+
+        for (int i = 0; i < noTranslator; i++) {
+            hash.put(sc.nextInt(), sc.nextInt());
+        }
+
+        for (int i = 0; i < noTranslate; i++) {
+            int keyToTranslate = sc.nextInt();
+            System.out.println(hash.containsKey(keyToTranslate) ?
+                    hash.get(keyToTranslate) : "C?");
+        }
     }
 
     public static void fraccionMix() {
