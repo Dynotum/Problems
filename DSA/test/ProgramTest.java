@@ -222,10 +222,10 @@ public class ProgramTest {
 
     @Test
     public void TestCaseTournamentWinner() {
-        ArrayList<ArrayList<String>> competitions = new ArrayList<ArrayList<String>>();
-        ArrayList<String> competition1 = new ArrayList<String>(Arrays.asList("HTML", "C#"));
-        ArrayList<String> competition2 = new ArrayList<String>(Arrays.asList("C#", "Python"));
-        ArrayList<String> competition3 = new ArrayList<String>(Arrays.asList("Python", "HTML"));
+        ArrayList<ArrayList<String>> competitions = new ArrayList<>();
+        ArrayList<String> competition1 = new ArrayList<>(Arrays.asList("HTML", "C#"));
+        ArrayList<String> competition2 = new ArrayList<>(Arrays.asList("C#", "Python"));
+        ArrayList<String> competition3 = new ArrayList<>(Arrays.asList("Python", "HTML"));
         competitions.add(competition1);
         competitions.add(competition2);
         competitions.add(competition3);

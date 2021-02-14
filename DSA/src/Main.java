@@ -60,12 +60,14 @@ public class Main {
 
         final Map<String, Integer> hash = new HashMap<>();
 
+        String currentWinner = "";
+        int aux = 0;
         for (int i = 0; i < results.size(); i++) {
             final List<String> list = competitions.get(i);
             final String comp1 = list.get(0);
             final String comp2 = list.get(1);
             final String winner = results.get(i) == 1 ? comp1 : comp2;
-            final String loser = winner.equals(comp1) ? winner : comp1;
+            final String loser = results.get(i) == 0 ? comp2 : comp1;
 
             if (hash.containsKey(winner)) {
                 hash.put(winner, hash.get(winner) + 3);
@@ -76,17 +78,14 @@ public class Main {
             if (!hash.containsKey(loser)) {
                 hash.put(loser, 0);
             }
-        }
-        int aux = 0;
-        String winner = "";
-        for (Map.Entry<String, Integer> value : hash.entrySet()) {
-            if (value.getValue() > aux) {
-                aux = value.getValue();
-                winner = value.getKey();
-                System.out.println(winner + " " + aux);
+
+            if (hash.get(winner) > aux) {
+                aux = hash.get(winner);
+                currentWinner = winner;
             }
         }
-        return winner;
+
+        return currentWinner;
     }
 
     private static int sumUp(long n) {
