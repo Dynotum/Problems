@@ -183,6 +183,7 @@ public class ProgramTest {
                                         Arrays.asList(6, new ArrayList<Object>(Arrays.asList(-13, 8)), 4))));
         assertTrue(Main.productSum(test) == 12);
     }
+
     @Test
     public void TestCaseBubbles() {
         int[] expected = {2, 3, 5, 5, 6, 8, 9};
@@ -206,81 +207,32 @@ public class ProgramTest {
     public void TestCaseBST() {
         var root = new Main.BST(10);
         root.left = new Main.BST(5);
-        root.left.left =  new Main.BST(2);
-        root.left.left.left =  new Main.BST(1);
-        root.left.right = new  Main.BST(5);
-        root.right = new  Main.BST(15);
-        root.right.left =  new Main.BST(13);
-        root.right.left.right =  new Main.BST(14);
-        root.right.right = new  Main.BST(22);
+        root.left.left = new Main.BST(2);
+        root.left.left.left = new Main.BST(1);
+        root.left.right = new Main.BST(5);
+        root.right = new Main.BST(15);
+        root.right.left = new Main.BST(13);
+        root.right.left.right = new Main.BST(14);
+        root.right.right = new Main.BST(22);
 
         var expected = 13;
         var actual = Main.findClosestValueInBst(root, 12);
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void TestCaseTournamentWinner() {
+        ArrayList<ArrayList<String>> competitions = new ArrayList<ArrayList<String>>();
+        ArrayList<String> competition1 = new ArrayList<String>(Arrays.asList("HTML", "C#"));
+        ArrayList<String> competition2 = new ArrayList<String>(Arrays.asList("C#", "Python"));
+        ArrayList<String> competition3 = new ArrayList<String>(Arrays.asList("Python", "HTML"));
+        competitions.add(competition1);
+        competitions.add(competition2);
+        competitions.add(competition3);
+        ArrayList<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 1));
+        String expected = "Python";
+        var actual = Main.tournamentWinner(competitions, results);
+        assertEquals(expected, actual);
+    }
 
 }
-
-///*
-//* // you can also use imports, for example:
-//import java.util.*;
-//
-//class Solution {
-//    /*
-//    *** It seems when there's a bigger lenght of string, it fails
-//        After obtaining the decimal value
-//        Computes whether is even by module % 2
-//        Otherwise, sum up by one.
-//        Average time O(n) due to it's a single while
-//    */
-//public int solution(String S) {
-//    // get decimal value
-//    int decNumber = getDecimal(S);
-//    int moves = 0;
-//    while (decNumber > 0) {
-//        if (decNumber % 2 == 0) {
-//            moves++;
-//            decNumber /= 2;
-//        }
-//        if (decNumber % 2 != 0) {
-//            moves++;
-//            decNumber--;
-//        }
-//    }
-//    return moves;
-//}
-//
-//    /*
-//        Binary string to Decimal int
-//        Reverse the string using the method of StringBuilder.
-//        Then, loops through the length of the string.
-//    */
-//    public int getDecimal(String binary) {
-//        // Realized this can be implemented without reversing
-//        // Instead, looping through the array can be backward
-//        final String revBinary = new StringBuilder(binary).reverse().toString();
-//
-//        int decNumber = 0, binNumber = 0;
-//        // O(n) due to looping through each char element of the string
-//        // If index is not zero, multiple by 2 -> binNumber -> 2,4,8,16...
-//        // Otherwise, is 1
-//        for (int i = 0; i < revBinary.length(); i++) {
-//            if (i == 0) {
-//                binNumber = 1;
-//            } else {
-//                binNumber *= 2;
-//            }
-//
-//            // In case there's a bit on, we need to sum up its decimal value
-//            if (revBinary.charAt(i) == '1') {
-//                decNumber += binNumber;
-//            }
-//        }
-//
-//        return decNumber;
-//    }
-//}
-//
-//*
-//* */

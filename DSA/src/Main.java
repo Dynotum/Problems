@@ -52,8 +52,41 @@ public class Main {
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
 //        NOFibonacci();
 //        translator();
-        System.out.println(sumUp(7205));
+//        System.out.println(sumUp(new Scanner(System.in).nextLong()));
+    }
 
+    public static String tournamentWinner(ArrayList<ArrayList<String>> competitions,
+                                          ArrayList<Integer> results) {
+
+        final Map<String, Integer> hash = new HashMap<>();
+
+        for (int i = 0; i < results.size(); i++) {
+            final List<String> list = competitions.get(i);
+            final String comp1 = list.get(0);
+            final String comp2 = list.get(1);
+            final String winner = results.get(i) == 1 ? comp1 : comp2;
+            final String loser = winner.equals(comp1) ? winner : comp1;
+
+            if (hash.containsKey(winner)) {
+                hash.put(winner, hash.get(winner) + 3);
+            } else {
+                hash.put(winner, 3);
+            }
+
+            if (!hash.containsKey(loser)) {
+                hash.put(loser, 0);
+            }
+        }
+        int aux = 0;
+        String winner = "";
+        for (Map.Entry<String, Integer> value : hash.entrySet()) {
+            if (value.getValue() > aux) {
+                aux = value.getValue();
+                winner = value.getKey();
+                System.out.println(winner + " " + aux);
+            }
+        }
+        return winner;
     }
 
     private static int sumUp(long n) {
