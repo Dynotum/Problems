@@ -52,7 +52,7 @@ public class Main {
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
 //        NOFibonacci();
 //        translator();
-//        System.out.println(sumUp(new Scanner(System.in).nextLong()));
+        System.out.println(sumUp(new Scanner(System.in).nextLong()));
     }
 
     public static String tournamentWinner(ArrayList<ArrayList<String>> competitions,
