@@ -53,6 +53,8 @@ public class Main {
 //        NOFibonacci();
 //        translator();
 //        System.out.println(sumUp(new Scanner(System.in).nextLong()));
+        getPercent();
+
     }
 
     public static String tournamentWinner(ArrayList<ArrayList<String>> competitions,
@@ -100,6 +102,12 @@ public class Main {
         return sumUp(n / 10, (int) (n % 10 + residuo));
     }
 
+    public static void getPercent() {
+        final List<String> list = Arrays.asList("#4421574144#");
+        final String[] str = list.get(0).split("#");
+        System.out.println(str[1]);
+
+    }
 
     public static void translator() {
         final Scanner sc = new Scanner(System.in);
