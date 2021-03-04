@@ -111,6 +111,19 @@ public class Main {
         return currentWinner;
     }
 
+    public static int firstDuplicate(int[] array) {
+
+        for (int i = 0; i < array.length; i++) {
+
+            if (array[Math.abs(array[i]) - 1] < 0) {
+                return Math.abs(array[i]);
+            } else {
+                array[Math.abs(array[i]) - 1] = - array[Math.abs(array[i]) - 1];
+            }
+        }
+        return -1;
+    }
+
     public static int[] mergeTwoSortedArrays(int[] A, int[] B) {
 
         int aLen = A.length - 1;

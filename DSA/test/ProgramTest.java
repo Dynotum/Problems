@@ -235,4 +235,12 @@ public class ProgramTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void TestFirstDuplicate() {
+        int[] array = new int[]{8, 4, 6, 2, 6, 4, 7, 9, 5, 8};
+        int result = Main.firstDuplicate(array);
+        int expected = 6;
+        assertEquals(result, expected);
+    }
+
 }
