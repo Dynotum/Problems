@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,6 +53,27 @@ public class Main {
 //        bubbleSort(new int[]{8, 5, 2, 9, 5, 6, 3});
 //        NOFibonacci();
 //        translator();
+
+        IDragon dragon = (name) -> "Hello " + name;
+        System.out.println(dragon.sayHelloWord());
+        System.out.println(dragon.sayHello("Dragon!"));
+
+        Hilo hilo = new Hilo();
+        IDragon dragon1 = hilo::hiloWord;
+
+        Predicate<String> stringPredicate = a -> a.startsWith("H");
+        System.out.println(stringPredicate.test(dragon1.sayHello("Dyno")));
+        System.out.println(stringPredicate.test(dragon1.sayHelloWord()));
+
+        System.out.println(dragon1.sayHello("Dyno"));
+        System.out.println(dragon1.sayHelloWord());
+
+        int[] A = new int[]{1, 7, 9};
+        int[] B = new int[]{2, 4, 8, 0, 0, 0};
+
+        B = mergeTwoSortedArrays(A, B);
+
+        Arrays.stream(B).forEach(System.out::println);
         System.out.println(sumUp(new Scanner(System.in).nextLong()));
         getPercent();
     }
@@ -87,6 +109,30 @@ public class Main {
         }
 
         return currentWinner;
+    }
+
+    public static int[] mergeTwoSortedArrays(int[] A, int[] B) {
+
+        int aLen = A.length - 1;
+        int bLen = B.length / 2 - 1;
+        int index = B.length - 1;
+
+        while (index >= 0) {
+            if (aLen < 0) {
+                B[index] = B[bLen--];
+            } else if (bLen < 0) {
+                B[index] = A[aLen--];
+            } else {
+                if (B[bLen] > A[aLen]) {
+                    B[index] = B[bLen--];
+                } else {
+                    B[index] = A[aLen--];
+                }
+            }
+            index--;
+        }
+
+        return B;
     }
 
     private static int sumUp(long n) {
