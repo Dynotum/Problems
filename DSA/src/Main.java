@@ -54,28 +54,68 @@ public class Main {
 //        NOFibonacci();
 //        translator();
 
-        IDragon dragon = (name) -> "Hello " + name;
-        System.out.println(dragon.sayHelloWord());
-        System.out.println(dragon.sayHello("Dragon!"));
+//        IDragon dragon = (name) -> "Hello " + name;
+//        System.out.println(dragon.sayHelloWord());
+//        System.out.println(dragon.sayHello("Dragon!"));
+//
+//        Hilo hilo = new Hilo();
+//        IDragon dragon1 = hilo::hiloWord;
+//
+//        Predicate<String> stringPredicate = a -> a.startsWith("H");
+//        System.out.println(stringPredicate.test(dragon1.sayHello("Dyno")));
+//        System.out.println(stringPredicate.test(dragon1.sayHelloWord()));
+//
+//        System.out.println(dragon1.sayHello("Dyno"));
+//        System.out.println(dragon1.sayHelloWord());
+//
+//        int[] A = new int[]{1, 7, 9};
+//        int[] B = new int[]{2, 4, 8, 0, 0, 0};
+//
+//        B = mergeTwoSortedArrays(A, B);
+//
+//        Arrays.stream(B).forEach(System.out::println);
+//        System.out.println(sumUp(new Scanner(System.in).nextLong()));
+//        getPercent();
 
-        Hilo hilo = new Hilo();
-        IDragon dragon1 = hilo::hiloWord;
+//        System.out.println(firstNotRepeatingCharacter("abacabad"));
 
-        Predicate<String> stringPredicate = a -> a.startsWith("H");
-        System.out.println(stringPredicate.test(dragon1.sayHello("Dyno")));
-        System.out.println(stringPredicate.test(dragon1.sayHelloWord()));
+//        System.out.println(sumOdd(5));
 
-        System.out.println(dragon1.sayHello("Dyno"));
-        System.out.println(dragon1.sayHelloWord());
+        interval(new int[][]{{1, 5}, {3, 9}, {4, 8}, {10, 13}}, 4);
+//                [1, 5],
+//    [3, 9],
+//    [4, 8],
+//    [10, 13]
+//]});
 
-        int[] A = new int[]{1, 7, 9};
-        int[] B = new int[]{2, 4, 8, 0, 0, 0};
+    }
 
-        B = mergeTwoSortedArrays(A, B);
+    public int solve(int[] nums) {
+        Arrays.sort(nums);
 
-        Arrays.stream(B).forEach(System.out::println);
-        System.out.println(sumUp(new Scanner(System.in).nextLong()));
-        getPercent();
+        int largestGap = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            int sum = Math.abs(nums[i] - nums[i + 1]);
+            largestGap = sum > largestGap ? sum : largestGap;
+        }
+        return largestGap;
+    }
+
+
+    public static int sumOdd(int n) {
+        int sum = 0;
+        int number = 1;
+        while (n < 0) {
+            if (number % 2 != 0) {
+                System.out.println(number);
+                sum += number;
+                n--;
+            }
+
+            number++;
+        }
+
+        return sum;
     }
 
     public static String tournamentWinner(ArrayList<ArrayList<String>> competitions,
@@ -111,14 +151,31 @@ public class Main {
         return currentWinner;
     }
 
+    public static char firstNotRepeatingCharacter(String s) {
+        int[] counter = new int[26];
+
+        for (char c : s.toCharArray()) {
+            System.out.println(c - 'a');
+            counter[c - 'a']++;
+        }
+
+        for (char c : s.toCharArray()) {
+            if (counter[c - 'a'] == 1) return c;
+        }
+
+        return '_';
+    }
+
+    /*
+     * Set collection can be worth it
+     */
     public static int firstDuplicate(int[] array) {
 
         for (int i = 0; i < array.length; i++) {
-
             if (array[Math.abs(array[i]) - 1] < 0) {
                 return Math.abs(array[i]);
             } else {
-                array[Math.abs(array[i]) - 1] = - array[Math.abs(array[i]) - 1];
+                array[Math.abs(array[i]) - 1] = -array[Math.abs(array[i]) - 1];
             }
         }
         return -1;
@@ -349,6 +406,74 @@ public class Main {
         }
 
         return true;
+    }
+
+    public static int interval(int[][] intervals, int point) {
+        int counter = 0;
+        for (int i = 0; i < intervals.length; i++) {
+            for (int j = 0; j < intervals[i].length - 1; j++) {
+                int a = intervals[i][j];
+                int b = intervals[i][++j];
+                if (point >= a && point <= b) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+
+
+    public static int numIdenticalPairs(int[] nums) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int elem : nums) {
+
+            if (map.containsKey(elem)) {
+                map.put(elem, map.get(elem) + 1);
+            } else {
+                map.getOrDefault(elem, 1);
+            }
+
+            int total = 0;
+            for (int value : map.values()) {
+                if (value > 1) {
+                    total += value;
+                }
+            }
+            return (total * (total - 1) )/ 2;
+        }
+
+
+        return 0;
+    }
+    public static int wealth(int[][] accounts) {
+
+        int richest = -1;
+        for (int[] a : accounts) {
+            int total = 0;
+            for (int i = 0; i < a.length; i++) {
+                total += a[i];
+            }
+            richest = Math.max(richest, total);
+        }
+        return richest;
+    }
+
+    public boolean isPalindrome3(String s) {
+
+        for (int i = 0, j = s.length() - 1; i < s.length() - 1; i++, j--) {
+            if (i == j) {
+                return true;
+            }
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+
     }
 
     public static List<Integer> moveElementToEndSolution1(List<Integer> array, int toMove) {
