@@ -3,6 +3,7 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.StrictMath.PI;
 import static java.lang.StrictMath.abs;
 import static org.junit.Assert.assertTrue;
 
@@ -81,13 +82,57 @@ public class Main {
 
 //        System.out.println(sumOdd(5));
 
-        interval(new int[][]{{1, 5}, {3, 9}, {4, 8}, {10, 13}}, 4);
+//        interval(new int[][]{{1, 5}, {3, 9}, {4, 8}, {10, 13}}, 4);
 //                [1, 5],
 //    [3, 9],
 //    [4, 8],
 //    [10, 13]
 //]});
+        addOne(new int[]{1, 2, 3});
+        System.out.println();
+        addOne(new int[]{1, 2, 9});
+        System.out.println();
+        addOne(new int[]{1, 9, 9});
+        System.out.println();
+        addOne(new int[]{9, 9, 9});
+    }
 
+    public static int[] addOne(int[] digits) {
+        // 9,9,9
+        // 1,0,0,0
+
+        // 1,2,9,9
+        // 1,3,0,0
+
+
+        boolean carry = false;
+        for (int i = digits.length - 1; i >= 0; i--) {
+
+            if (digits[i] == 9) {
+                digits[i] = 0;
+                carry = true;
+                continue;
+            }
+
+            if (carry) {
+                digits[i] = digits[i] + 1;
+                carry = false;
+            } else if (i == digits.length - 1) {
+                digits[i] = digits[i] + 1;
+            }
+        }
+        if (carry) {
+            int[] newArray = new int[digits.length + 1];
+            newArray[0] = 1;
+
+            System.arraycopy(digits, 0, newArray, 1, digits.length);
+            Arrays.stream(newArray).forEach(System.out::print);
+            return newArray;
+        }
+
+        Arrays.stream(digits).forEach(System.out::print);
+
+        return digits;
     }
 
     public int solve(int[] nums) {
@@ -165,10 +210,10 @@ public class Main {
 
         return '_';
     }
-
     /*
      * Set collection can be worth it
      */
+
     public static int firstDuplicate(int[] array) {
 
         for (int i = 0; i < array.length; i++) {
@@ -290,8 +335,8 @@ public class Main {
         }
     }
 
-
     // omegaUp
+
     public static void triples() {
         final Scanner sc = new Scanner(System.in);
 
@@ -441,12 +486,13 @@ public class Main {
                     total += value;
                 }
             }
-            return (total * (total - 1) )/ 2;
+            return (total * (total - 1)) / 2;
         }
 
 
         return 0;
     }
+
     public static int wealth(int[][] accounts) {
 
         int richest = -1;
