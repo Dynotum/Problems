@@ -211,6 +211,63 @@ public class Main {
         return currentWinner;
     }
 
+    public static boolean buddyStrings(String a, String b) {
+
+        /*
+        [ a a a b c a]
+        [ a a a c b a]
+        */
+
+        if (a.length() != b.length()) {
+            return false;
+        }
+
+        if (a.equals(b)) {
+            // this piece of code was copied by the solution
+            int[] count = new int[26];
+            for (int i = 0; i < a.length(); ++i)
+                count[a.charAt(i) - 'a']++;
+
+            for (int c : count)
+                if (c > 1) return true;
+            return false;
+            // this piece of code was copied by the solution
+        }
+
+        List<Integer> list = new LinkedList<>();
+
+        for (int i = 0; i < a.length(); i++) {
+
+            if (a.charAt(i) != b.charAt(i)) {
+                list.add(i);
+            }
+
+            if (list.size() > 2) {
+                return false;
+            }
+        }
+
+        if (list.size() != 2) {
+            return false;
+        }
+
+        char aux = a.charAt(list.get(0));
+        char aux2 = a.charAt(list.get(1));
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < a.length(); i++) {
+            if (i == list.get(0)) {
+                sb.append(aux2);
+            } else if (i == list.get(1)) {
+                sb.append(aux);
+            } else {
+                sb.append(a.charAt(i));
+            }
+        }
+        //    a b c d e f g h i j k l m n o p q r s t u v w x y z
+        return sb.toString().equals(b);
+    }
+
     public static char firstNotRepeatingCharacter(String s) {
         int[] counter = new int[26];
 
