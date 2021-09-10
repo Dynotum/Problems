@@ -1,3 +1,4 @@
+/*
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -243,4 +244,15 @@ public class ProgramTest {
         assertEquals(result, expected);
     }
 
-}
+
+
+    class simple{
+        int x= 1;
+        int y = 2;
+
+        simple(int x, int y){
+            this(x);
+            this.
+        }
+    }
+}*/
